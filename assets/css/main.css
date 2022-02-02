@@ -240,6 +240,10 @@ input, select, textarea {
 	.align-right {
 		text-align: right;
 	}
+	.actions{
+		float: center;
+		margin: 0 auto;
+	}
 
 /* Container */
 
@@ -2035,7 +2039,7 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
-/* Image */
+/* Image                      */
 
 	.image {
 		border-radius: 0.35em;
@@ -2059,6 +2063,7 @@ input, select, textarea {
 			position: absolute;
 			top: 0;
 			width: 100%;
+			filter: brightness(50%);
 		}
 
 		.image.thumb {
@@ -2142,8 +2147,19 @@ input, select, textarea {
 			}
 
 			.image.avatar img {
+				width: 120px;
+				height: 120px;
 				border-radius: 100%;
-				width: 100%;
+				
+     
+            -moz-transform:scale(1.5); 
+            -webkit-transform:scale(1.5); 
+            -o-transform:scale(1.5); 
+	
+	        image-rendering: auto;
+	        transform: scale(1.5);
+
+
 			}
 
 /* List */

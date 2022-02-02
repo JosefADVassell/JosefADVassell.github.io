@@ -432,14 +432,16 @@
 
 		// Events.
 			$this
-				.on('submit', function() {
-
+				$.on('submit', function() {
+                    
 					$this.find('input[type=text],input[type=password],textarea')
 						.each(function(event) {
 
 							var i = $(this);
-
-							if (i.attr('name').match(/-polyfill-field$/))
+                            
+                            
+                            console.log('hi');
+							if (i.attr('name').match('polyfill-field'))
 								i.attr('name', '');
 
 							if (i.val() == i.attr('placeholder')) {
@@ -450,10 +452,11 @@
 							}
 
 						});
+				
 
 				})
 				.on('reset', function(event) {
-
+                 
 					event.preventDefault();
 
 					$this.find('select')
@@ -583,5 +586,37 @@
 			});
 
 	};
+/*
+document.querySelector('.contact').addEventListener("submit", sumbitForm);
+
+function sumbitForm(e)
+{
+	e.preventDefault();
+    let name=document.querySelector(".name").value;
+    let email=document.querySelector(".email").value;
+	let message=document.querySelector(".message").value;
+	document.querySelector('.contact').reset();
+	sendEmail(name, email, message);
+}
+*/
+document.querySelector(".contact").onclick = function() {sendEmail()};
+function sendEmail()
+{
+	console.log("hi");
+	
+	Email.send({
+		Host : "smtp.elasticemail.com",
+		Username : "josefandrewvassell@gmail.com",
+		Password : "7E4E54090EA4729310D6F6684802EC5970FE",
+		To : 'josefandrewvassell@gmail.com',
+		From : "josefandrewvassell@gmail.com",
+		Subject : "New Enquiry",
+		Body : "Name:" + document.getElementById("name").value
+		+ "<br> Email:" + document.getElementById("email").value 
+		+ "<br> Message:" + document.getElementById("message").value,
+	}).then(
+	  message => alert("Message has been sent"));
+	
+}
 
 })(jQuery);
